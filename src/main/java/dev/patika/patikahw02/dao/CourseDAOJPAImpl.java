@@ -19,10 +19,13 @@ public class CourseDAOJPAImpl implements CourseDAO<Course> {
         this.entityManager = entityManager;
     }
 
+    // to get a list we need a Query
+    // Adding Hibarnate Framework Support solves the 'FROM' unexpected error
     @Override
     public List<Course> findAll() {
         return entityManager.createQuery("FROM Course e", Course.class).getResultList();
     }
+
 
     @Override
     public Course findById(int id) {

@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+// Business Logic is created around the Service
 @Service
 public class CourseService implements BaseService<Course>{
 
