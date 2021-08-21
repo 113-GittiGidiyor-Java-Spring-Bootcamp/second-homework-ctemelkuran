@@ -13,30 +13,37 @@ import java.util.List;
 @Service
 public class CourseService implements BaseService<Course>{
 
-    private CourseDAO CourseDAOJPA;
+    private final CourseDAO courseDAO;
 
-    public CourseService(@Qualifier("courseDAOHibernateImpl") CourseDAO CourseDAOJPA) {
-        this.CourseDAOJPA = CourseDAOJPA;
+    // Since there are two beans we chose one inside @Qualifier
+    public CourseService(@Qualifier("courseDAOJPAImpl") CourseDAO CourseDAO) {
+        this.courseDAO = CourseDAO;
     }
 
     @Override
     public List<Course> findAll() {
-        return CourseDAOJPA.findAll();
+        return courseDAO.findAll();
     }
 
     @Override
     public Course findById(int id) {
-        return (Course) CourseDAOJPA.findById(id);
+        return (Course) courseDAO.findById(id);
     }
 
     @Override
     @Transactional
     public Course save(Course Course) {
-        return (Course) CourseDAOJPA.save(Course);
+        return (Course) courseDAO.save(Course);
     }
 
     @Override
     public void deleteById(int id) {
 
+    }
+
+    @Override
+    @Transactional
+    public Course update(Course Course) {
+        return (Course) courseDAO.update(Course);
     }
 }

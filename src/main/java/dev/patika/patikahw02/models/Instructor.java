@@ -18,7 +18,7 @@ public class Instructor {
     // One instructor may have several courses
     // mapping is handled at One to Many relation
     @OneToMany(mappedBy = "instructor")
-    List<Course> courses = new ArrayList<>();
+    List<Course> instructorCourses = new ArrayList<>();
 
     public Instructor(String name, String address, String phoneNumber) {
         this.name = name;
@@ -28,6 +28,7 @@ public class Instructor {
 
     public Instructor() {
     }
+
 
     public String getName() {
         return name;
@@ -53,12 +54,17 @@ public class Instructor {
         this.phoneNumber = phoneNumber;
     }
 
-    public List<Course> getInstructorCourses() {
-        return courses;
+    public int getId() {
+        return id;
     }
 
-    public void setInstructorCourses(List<Course> courses) {
-        this.courses = courses;
+
+    public List<Course> getInstructorCourses() {
+        return instructorCourses;
+    }
+
+    public void setInstructorCourses(List<Course> instructorCourses) {
+        this.instructorCourses = instructorCourses;
     }
 
     // Only phoneNumber is used for equals & hashCode

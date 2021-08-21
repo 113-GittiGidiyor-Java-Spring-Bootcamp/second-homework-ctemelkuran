@@ -16,12 +16,11 @@ public class Course {
     // courseCode unique olsa da best practice olarak id tanımlanır
     // autogenerate sağlanmaz, string olduğu için syntax kontrolü zor olur
 
-    @ManyToMany(mappedBy = "courses")
+    @ManyToMany(mappedBy = "studentCourses")
     private List<Student> students = new ArrayList<>();
 
     @ManyToOne
     private Instructor instructor;
-
 
 
     //constructors
@@ -35,6 +34,12 @@ public class Course {
     }
 
     // getter & setters
+
+    public int getId() {
+        return id;
+    }
+
+
     public String getCourseCode() {
         return courseCode;
     }

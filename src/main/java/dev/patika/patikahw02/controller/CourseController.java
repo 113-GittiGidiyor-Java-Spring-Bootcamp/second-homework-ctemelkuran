@@ -12,6 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 public class CourseController {
+    // No business logic in Controller
     CourseService courseService;
 
     @Autowired
@@ -33,4 +34,15 @@ public class CourseController {
     public ResponseEntity<Course> findCourseById(@PathVariable int id){
         return new ResponseEntity<>(courseService.findById(id), HttpStatus.OK);
     }
+
+    @PutMapping("/courses")
+    public Course updateCourse(@RequestBody Course course){
+        return courseService.update(course);
+    }
+    @DeleteMapping("/courses/{id}")
+    public String deleteEmployeeById(@PathVariable int id){
+        courseService.deleteById(id);
+        return "Deleted...";
+    }
+
 }

@@ -20,8 +20,7 @@ public class Student {
     // With regard to normalisation Hibernate creates an association table (E.g student_courses)
     // A student can attend to 0 or more courses
     @ManyToMany
-    private List<Course> courses = new ArrayList<>();
-
+    private List<Course> studentCourses = new ArrayList<>();
 
     //constructors
     public Student() {
@@ -69,15 +68,19 @@ public class Student {
         this.gender = gender;
     }
 
-    public List<Course> getCourses() {
-        return courses;
+    public int getId() {
+        return id;
     }
 
-    public void setCourses(List<Course> courseList) {
-        this.courses = courseList;
+    public List<Course> getStudentCourses() {
+        return studentCourses;
     }
 
-    // equals and hashCode & toString
+    public void setStudentCourses(List<Course> studentCourses) {
+        this.studentCourses = studentCourses;
+    }
+
+// equals and hashCode & toString
 
     @Override
     public boolean equals(Object o) {
