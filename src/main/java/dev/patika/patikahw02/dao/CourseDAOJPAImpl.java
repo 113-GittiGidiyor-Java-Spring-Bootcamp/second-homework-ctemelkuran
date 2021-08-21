@@ -2,6 +2,7 @@ package dev.patika.patikahw02.dao;
 
 
 import dev.patika.patikahw02.models.Course;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -9,12 +10,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import java.util.List;
-import java.util.logging.Logger;
 
 @Repository
 public class CourseDAOJPAImpl implements CourseDAO<Course> {
 
-    //private static final Logger logger = (Logger) LoggerFactory.getLogger(CourseDAOJPAImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(CourseDAOJPAImpl.class);
     private final EntityManager entityManager;
 
 
@@ -44,14 +44,18 @@ public class CourseDAOJPAImpl implements CourseDAO<Course> {
     // @Transactional provides begin(), commit() and close()
     @Override
     @Transactional
-    public Course save(Course Course) {
-        return entityManager.merge(Course);
+    public Course save(Course course) {
+        return entityManager.merge(course);
     }
 
     @Override
     @Transactional
     public void deleteById(int id) {
         Course course = this.findById(id);
+
+        if(course == null){
+            logger.error("Course not found with id: " + id);
+        }
         entityManager.remove(course);
     }
 
