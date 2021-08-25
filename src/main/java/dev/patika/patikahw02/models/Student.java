@@ -19,6 +19,7 @@ public class Student {
 
     // With regard to normalisation Hibernate creates an association table (E.g student_courses)
     // A student can attend to 0 or more courses
+    //@JsonIgnoreProperties({"students", "instructor"})
     @ManyToMany
     private List<Course> studentCourses = new ArrayList<>();
 

@@ -39,6 +39,7 @@ public class CourseController {
     public Course updateCourse(@RequestBody Course course){
         return courseService.update(course);
     }
+
     @DeleteMapping("/courses/{id}")
     public String deleteEmployeeById(@PathVariable int id){
         courseService.deleteById(id);
