@@ -1,5 +1,6 @@
 package dev.patika.patikahw02.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -24,7 +25,7 @@ public class Instructor {
 
     // One instructor may have several courses
     // mapping is handled at One to Many relation
-    @JsonIgnoreProperties({"instructor", "students"})
+    @JsonIgnore
     @OneToMany(mappedBy = "instructor")
     List<Course> instructorCourses = new ArrayList<>();
 

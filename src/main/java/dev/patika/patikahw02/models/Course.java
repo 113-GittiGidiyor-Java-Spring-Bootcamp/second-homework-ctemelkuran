@@ -1,5 +1,6 @@
 package dev.patika.patikahw02.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -18,7 +19,7 @@ public class Course {
     // courseCode unique olsa da best practice olarak id tanımlanır
     // autogenerate sağlanmaz, string olduğu için syntax kontrolü zor olur
 
-    @JsonIgnoreProperties({"studentCourses"})
+    @JsonIgnore
     @ManyToMany(mappedBy = "studentCourses")
     private List<Student> students = new ArrayList<>();
 

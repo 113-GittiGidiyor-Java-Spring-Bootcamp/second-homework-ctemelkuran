@@ -42,4 +42,10 @@ public class InstructorService implements BaseService<Instructor>{
     public void deleteById(int id) {
         instructorDAO.deleteById(id);
     }
+
+    @Override
+    @Transactional
+    public void delete(Instructor instructor) {
+        instructorDAO.delete(instructor);
+    }
 }

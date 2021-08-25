@@ -1,6 +1,7 @@
 package dev.patika.patikahw02.dao;
 
 import dev.patika.patikahw02.models.Course;
+import dev.patika.patikahw02.models.Instructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -12,4 +13,6 @@ public interface BaseDAO<T> {
     T save(T object);
     void deleteById(int id);
     T update(T object);
+
+    void delete(T object);
 }

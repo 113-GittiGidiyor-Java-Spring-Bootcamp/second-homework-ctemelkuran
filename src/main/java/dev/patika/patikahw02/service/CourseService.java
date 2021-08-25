@@ -43,6 +43,11 @@ public class CourseService implements BaseService<Course>{
     }
 
     @Override
+    public void delete(Course course) {
+        courseDAO.delete(course);
+    }
+
+    @Override
     @Transactional
     public Course update(Course Course) {
         return (Course) courseDAO.update(Course);
