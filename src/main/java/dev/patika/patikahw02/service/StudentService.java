@@ -39,6 +39,7 @@ public class StudentService implements BaseService<Student>{
     }
 
     @Override
+    @Transactional
     public void deleteById(int id) {
         studentDAO.deleteById(id);
     }

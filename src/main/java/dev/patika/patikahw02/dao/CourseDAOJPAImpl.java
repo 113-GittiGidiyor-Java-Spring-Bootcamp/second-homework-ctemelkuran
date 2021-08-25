@@ -17,7 +17,6 @@ public class CourseDAOJPAImpl implements CourseDAO<Course> {
     private static final Logger logger = LoggerFactory.getLogger(CourseDAOJPAImpl.class);
     private final EntityManager entityManager;
 
-
     // Used constructor injection
     @Autowired
     public CourseDAOJPAImpl(EntityManager entityManager) {

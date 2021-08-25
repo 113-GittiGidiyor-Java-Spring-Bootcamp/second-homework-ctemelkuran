@@ -38,6 +38,7 @@ public class InstructorDAOJPAImpl implements InstructorDAO<Instructor> {
     }
 
     @Override
+    @Transactional
     public void deleteById(int id) {
         Instructor instructor = this.findById(id);
 
@@ -49,6 +50,7 @@ public class InstructorDAOJPAImpl implements InstructorDAO<Instructor> {
     }
 
     @Override
+    @Transactional
     public Instructor update(Instructor instructor) {
         return entityManager.merge(instructor);
     }

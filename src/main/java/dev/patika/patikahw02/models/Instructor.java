@@ -1,12 +1,18 @@
 package dev.patika.patikahw02.models;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED) //SINGLETABLE'da Permenant ve Visitor Instructor table altına kaydedilir
+@Inheritance(strategy = InheritanceType.JOINED)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonSubTypes({@JsonSubTypes.Type(value = PermenantInstructor.class, name = "PermenantInstructor"),
+        @JsonSubTypes.Type(value = VisitingResearcher.class, name = "VisitingResearcher")}) // Instructor type should be declared
 public class Instructor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,6 +25,7 @@ public class Instructor {
     // mapping is handled at One to Many relation
     @OneToMany(mappedBy = "instructor")
     List<Course> instructorCourses = new ArrayList<>();
+
 
     public Instructor(String name, String address, String phoneNumber) {
         this.name = name;

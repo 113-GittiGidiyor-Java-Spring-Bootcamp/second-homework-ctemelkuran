@@ -39,6 +39,7 @@ public class StudentDAOJPAImpl implements StudentDAO<Student>{
     }
 
     @Override
+    @Transactional
     public void deleteById(int id) {
         Student student = this.findById(id);
 
@@ -50,6 +51,7 @@ public class StudentDAOJPAImpl implements StudentDAO<Student>{
     }
 
     @Override
+    @Transactional
     public Student update(Student student) {
         return entityManager.merge(student);
     }

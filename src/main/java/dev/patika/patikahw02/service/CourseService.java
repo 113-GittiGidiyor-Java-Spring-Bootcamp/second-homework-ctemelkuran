@@ -37,6 +37,7 @@ public class CourseService implements BaseService<Course>{
     }
 
     @Override
+    @Transactional
     public void deleteById(int id) {
         courseDAO.deleteById(id);
     }
