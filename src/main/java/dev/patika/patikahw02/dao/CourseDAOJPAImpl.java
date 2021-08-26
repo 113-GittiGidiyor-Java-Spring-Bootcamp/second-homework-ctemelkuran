@@ -63,4 +63,9 @@ public class CourseDAOJPAImpl implements CourseDAO<Course> {
     public Course update(Course course){
         return entityManager.merge(course);
     }
+
+    @Override
+    public void delete(Course object) {
+        entityManager.remove(object);
+    }
 }

@@ -55,4 +55,9 @@ public class StudentDAOJPAImpl implements StudentDAO<Student>{
     public Student update(Student student) {
         return entityManager.merge(student);
     }
+
+    @Override
+    public void delete(Student object) {
+        entityManager.remove(object);
+    }
 }

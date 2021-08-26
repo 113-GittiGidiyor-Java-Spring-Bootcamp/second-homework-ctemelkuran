@@ -41,9 +41,18 @@ public class CourseController {
     }
 
     @DeleteMapping("/courses/{id}")
-    public String deleteEmployeeById(@PathVariable int id){
+    public String deleteCourseById(@PathVariable int id){
         courseService.deleteById(id);
         return "Deleted...";
     }
-
+    @DeleteMapping("/courses")
+    public ResponseEntity<String> deleteCourseByEntity(@RequestBody Course course) {
+        Course foundCourse = courseService.findById(course.getId());
+        if (foundCourse != null) {
+            courseService.delete(course);
+            return new ResponseEntity<>("Deleted course: " + foundCourse, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<String>("Course with id: " + course.getId() + " not found.", HttpStatus.BAD_REQUEST);
+        }
+    }
 }

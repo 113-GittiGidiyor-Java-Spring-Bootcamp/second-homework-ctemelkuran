@@ -41,8 +41,19 @@ public class InstructorController {
         return instructorService.update(instructor);
     }
     @DeleteMapping("/instructors/{id}")
-    public String deleteEmployeeById(@PathVariable int id){
+    public String deleteInstructorById(@PathVariable int id){
         instructorService.deleteById(id);
         return "Deleted id:" + id;
+    }
+
+    @DeleteMapping("/instructors")
+    public ResponseEntity<String> deleteInstructorByEntity(@RequestBody Instructor instructor) {
+        Instructor foundInstructor = instructorService.findById(instructor.getId());
+        if (foundInstructor != null) {
+            instructorService.delete(instructor);
+            return new ResponseEntity<>("Deleted instructor: " + foundInstructor, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<String>("Instructor with id: " + instructor.getId() + " not found.", HttpStatus.BAD_REQUEST);
+        }
     }
 }

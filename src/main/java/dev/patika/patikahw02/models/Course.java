@@ -20,10 +20,10 @@ public class Course {
     // autogenerate sağlanmaz, string olduğu için syntax kontrolü zor olur
 
     @JsonIgnore
-    @ManyToMany(mappedBy = "studentCourses")
+    @ManyToMany(mappedBy = "studentCourses", fetch = FetchType.LAZY)
     private List<Student> students = new ArrayList<>();
 
-    @JsonIgnoreProperties("{instructorCourses}")
+    //@JsonIgnoreProperties("{instructorCourses}")
     @ManyToOne
     private Instructor instructor;
 

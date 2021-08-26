@@ -26,7 +26,7 @@ public class Instructor {
     // One instructor may have several courses
     // mapping is handled at One to Many relation
     @JsonIgnore
-    @OneToMany(mappedBy = "instructor")
+    @OneToMany(mappedBy = "instructor", fetch = FetchType.LAZY)
     List<Course> instructorCourses = new ArrayList<>();
 
 

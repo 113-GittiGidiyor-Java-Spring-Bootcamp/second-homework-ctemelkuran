@@ -45,4 +45,9 @@ public class CourseDAOHibernateImpl implements CourseDAO<Course> {
     public Course update(Course object) {
         return null;
     }
+
+    @Override
+    public void delete(Course object) {
+
+    }
 }

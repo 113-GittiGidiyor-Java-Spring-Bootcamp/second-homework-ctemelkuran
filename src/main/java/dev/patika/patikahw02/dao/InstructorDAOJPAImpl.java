@@ -54,4 +54,9 @@ public class InstructorDAOJPAImpl implements InstructorDAO<Instructor> {
     public Instructor update(Instructor instructor) {
         return entityManager.merge(instructor);
     }
+
+    @Override
+    public void delete(Instructor object) {
+        entityManager.remove(entityManager.getReference(Instructor.class, object.getId()));
+    }
 }
